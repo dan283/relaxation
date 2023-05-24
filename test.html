@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Message Board</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 20px;
+    }
+
+    h1 {
+      text-align: center;
+    }
+
+    form {
+      margin-bottom: 20px;
+    }
+
+    textarea {
+      width: 100%;
+      height: 100px;
+    }
+
+    .message {
+      background-color: #f5f5f5;
+      padding: 10px;
+      margin-bottom: 10px;
+    }
+  </style>
+</head>
+<body>
+  <h1>Message Board</h1>
+
+  <form id="messageForm">
+    <textarea id="messageInput" placeholder="Write your message here..."></textarea>
+    <br>
+    <button type="submit">Post Message</button>
+  </form>
+
+  <div id="messageContainer"></div>
+
+  <script>
+    document.getElementById("messageForm").addEventListener("submit", function(event) {
+      event.preventDefault();
+      var messageInput = document.getElementById("messageInput");
+      var messageContainer = document.getElementById("messageContainer");
+      
+      if (messageInput.value.trim() !== "") {
+        var message = document.createElement("div");
+        message.className = "message";
+        message.textContent = messageInput.value;
+        messageContainer.prepend(message);
+        messageInput.value = "";
+      }
+    });
+  </script>
+</body>
+</html>
